@@ -35,7 +35,7 @@ class Fluent::EventLastValueOutput < Fluent::BufferedOutput
     end
 
     last_values.each do |key, value|
-      Fluent::Engine.emit(@emit_to, Time.now, @id_key => key, @last_value_key => value)
+      Fluent::Engine.emit(@emit_to, Time.now, @id_key => key, @last_value_key => value, 'ts' => Time.now.to_s)
     end
   end
 end
